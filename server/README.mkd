@@ -1,0 +1,6 @@
+Database name: bestProject
+
+Create a .env file with
+
+PG_USERNAME = "your username"
+PG_PASSWORD = "your password"

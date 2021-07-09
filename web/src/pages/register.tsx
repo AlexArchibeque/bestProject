@@ -7,6 +7,7 @@ import { InputField } from "../components/InputField";
 interface registerProps {}
 
 const Register: React.FC<registerProps> = ({}) => {
+  const [] = userMutation(``);
   return (
     <Wrapper>
       <Formik
