@@ -17,7 +17,6 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
   } else if (!data?.me) {
     body = (
       <>
-        {" "}
         <NextLink href="/login">
           <Link mr={2}>Login</Link>
         </NextLink>
@@ -31,14 +30,14 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
   } else {
     body = (
       <Flex>
-        <Box>{data.me.username}</Box>
-        <Button varient="link">logout</Button>
+        <Box mr={2}>{data.me.username}</Box>
+        <Button variant="link">logout</Button>
       </Flex>
     );
   }
 
   return (
-    <Flex bg="tomato" p={4}>
+    <Flex bg="tan" p={4}>
       <Box ml={"auto"}>{body}</Box>
     </Flex>
   );
