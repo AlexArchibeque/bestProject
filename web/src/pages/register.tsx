@@ -18,7 +18,7 @@ const Register: React.FC<registerProps> = ({}) => {
         {({ isSubmitting }) => (
           <Form>
             <InputField
-              name="username2"
+              name="username"
               placeholder="username"
               label="Username"
             />
