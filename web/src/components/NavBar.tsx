@@ -39,7 +39,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
           isLoading={logoutFetching}
           variant="link"
         >
-          logout
+          Logout
         </Button>
       </Flex>
     );
