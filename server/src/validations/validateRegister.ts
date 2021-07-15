@@ -22,7 +22,7 @@ export const validateRegister = (options: UsernamePasswordInput) => {
   if (options.username.includes("@")) {
     return [
       {
-        field: "user",
+        field: "username",
         message: "username cannot contain an @ sign.",
       },
     ];
