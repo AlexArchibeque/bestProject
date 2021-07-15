@@ -15,7 +15,7 @@ const Register: React.FC<registerProps> = ({}) => {
   const router = useRouter();
   const [, register] = useRegisterMutation();
   return (
-    <Wrapper>
+    <Wrapper variant="small">
       <Formik
         initialValues={{ email: "", username: "", password: "" }}
         onSubmit={async (values, { setErrors }) => {
