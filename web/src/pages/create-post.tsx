@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { Formik, Form } from "formik";
 import { InputField } from "../components/InputField";
 import { Box, Button } from "@chakra-ui/react";
-import { useCreatePostMutation } from "../generated/graphql";
+import { useCreatePostMutation, useMeQuery } from "../generated/graphql";
 import { useRouter } from "next/router";
 import { Layout } from "../components/Layout";
+import { useIsAuth } from "../utils/useIsAuth";
 
 const CreatePost: React.FC<{}> = ({}) => {
   const router = useRouter();
+  useIsAuth();
   const [, createPost] = useCreatePostMutation();
   return (
     <Layout variant="small">
@@ -17,10 +19,7 @@ const CreatePost: React.FC<{}> = ({}) => {
         initialValues={{ title: "", text: "" }}
         onSubmit={async (values, { setErrors }) => {
           const { error } = await createPost({ input: values });
-          console.log("error :", error);
-          if (error?.message.includes("Not Authenticated")) {
-            router.push("login");
-          } else {
+          if (!error) {
             router.push("/");
           }
         }}
