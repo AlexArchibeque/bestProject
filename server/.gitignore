@@ -4,6 +4,7 @@ dist
 package-lock.json
 /.pnp
 .pnp.js
+dump.rdb
 
 # testing
 /coverage
