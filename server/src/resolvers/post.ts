@@ -24,7 +24,7 @@ class PostInput {
 export class PostResolver {
   @Query(() => [Post])
   async posts(): Promise<Post[]> {
-    return await Post.find({});
+    return await Post.find();
   }
 
   @Query(() => Post, { nullable: true })
@@ -38,13 +38,18 @@ export class PostResolver {
     @Arg("input") input: PostInput,
     @Ctx() { req }: MyContext
   ): Promise<Post> {
-    return Post.create({ ...input, creatorId: req.session.userId }).save();
+    console.log(input);
+    return await Post.create({
+      title: input.title,
+      text: input.text,
+      creatorId: req.session.userId,
+    }).save();
   }
 
   @Mutation(() => Post, { nullable: true })
   async updatePost(
     @Arg("id") id: number,
-    @Arg("title", () => String, { nullable: true }) title: string
+    @Arg("title") title: string
   ): Promise<Post | null> {
     const post = await Post.findOne(id);
     if (!post) {

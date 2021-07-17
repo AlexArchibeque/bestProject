@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { Formik, Form } from "formik";
 import { InputField } from "../components/InputField";
 import { Box, Button } from "@chakra-ui/react";
-import { useCreatePostMutation, useMeQuery } from "../generated/graphql";
+import { useCreatePostMutation } from "../generated/graphql";
 import { useRouter } from "next/router";
 import { Layout } from "../components/Layout";
 import { useIsAuth } from "../utils/useIsAuth";
