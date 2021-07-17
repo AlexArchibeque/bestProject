@@ -2,6 +2,8 @@ query Posts {
   posts {
     id
     title
+    text
+    points
     createdAt
     updatedAt
   }

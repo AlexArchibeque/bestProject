@@ -39,7 +39,7 @@ export type MutationCreatePostArgs = {
 
 
 export type MutationUpdatePostArgs = {
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   id: Scalars['Float'];
 };
 
@@ -231,7 +231,7 @@ export type PostsQuery = (
   { __typename?: 'Query' }
   & { posts: Array<(
     { __typename?: 'Post' }
-    & Pick<Post, 'id' | 'title' | 'createdAt' | 'updatedAt'>
+    & Pick<Post, 'id' | 'title' | 'text' | 'points' | 'createdAt' | 'updatedAt'>
   )> }
 );
 
@@ -342,6 +342,8 @@ export const PostsDocument = gql`
   posts {
     id
     title
+    text
+    points
     createdAt
     updatedAt
   }
