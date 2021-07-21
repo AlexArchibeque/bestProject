@@ -21,7 +21,7 @@ if (!__prod__) {
 
 let postgresUsername = process.env.PG_USERNAME;
 let postgresPassword = process.env.PG_PASSWORD;
-
+//rerun
 const main = async () => {
   const conn = await createConnection({
     type: "postgres",
@@ -35,6 +35,8 @@ const main = async () => {
   });
 
   await conn.runMigrations();
+
+  // await Post.delete({});
 
   const app = express();
 
