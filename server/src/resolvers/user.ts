@@ -6,6 +6,8 @@ import {
   Ctx,
   ObjectType,
   Query,
+  FieldResolver,
+  Root,
 } from "type-graphql";
 import { MyContext } from "../types";
 import { User } from "../entities/User";
@@ -34,8 +36,19 @@ class UserResponse {
   user?: User;
 }
 
-@Resolver()
+@Resolver(User)
 export class UserResolver {
+  @FieldResolver(() => String)
+  email(@Root() user: User, @Ctx() { req }: MyContext) {
+    // the current user is requesting the email info and sending it to the front end is ok.
+    if (req.session.userId === user.id) {
+      return user.email;
+    }
+
+    // a user that is not the owner of the email is not allowed access to anothers email.
+    return "";
+  }
+
   @Mutation(() => UserResponse)
   async changePassword(
     @Arg("token") token: string,
